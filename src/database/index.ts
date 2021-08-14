@@ -4,15 +4,18 @@ interface IOptions {
   host: string;
 }
 
-try {
-  getConnectionOptions().then((options) => {
-    const newOptions = options as IOptions;
-    newOptions.host = "database";
-    createConnection({
-      ...options,
-    });
-    console.log("Conectado ao bando de dados");
+const connection = getConnectionOptions().then((options) => {
+  const newOptions = options as IOptions;
+  newOptions.host = "database";
+  createConnection({
+    ...options,
   });
-} catch (error) {
-  console.log(error);
-}
+});
+
+connection
+  .then(() => {
+    console.log("Banco de dados conectado");
+  })
+  .catch((err) => {
+    console.log("Não foi possível conectar à base de dados:", err);
+  });
