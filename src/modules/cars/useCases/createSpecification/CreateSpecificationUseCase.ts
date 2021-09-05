@@ -1,7 +1,6 @@
+import { AppError } from "@errors/AppErrors";
+import { SpecificationsRepository } from "@modules/cars/repositories/implementations/SpecificationsRepository";
 import { inject, injectable } from "tsyringe";
-
-import { AppError } from "../../../../errors/AppErrors";
-import { SpecificationsRepository } from "../../repositories/implementations/SpecificationsRepository";
 
 interface IRequest {
   name: string;
