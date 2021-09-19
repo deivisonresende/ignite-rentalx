@@ -11,7 +11,6 @@ getConnectionOptions()
     createConnection({
       ...options,
     });
-    console.log("Banco de dados conectado");
   })
   .catch((err) => {
     console.log("Não foi possível conectar à base de dados:", err);

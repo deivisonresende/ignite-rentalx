@@ -4,19 +4,18 @@
 
 **RF**
 
--[] Deve ser possível cadastrar um novo carro;
+-[ x ] Deve ser possível cadastrar um novo carro;
 
--[] Deve ser possível listar todas as categorias; 
 
 **RN**
 
--[] Não deve ser possível cadastrar um carro com uma placa já existente;
+-[ x ] Não deve ser possível cadastrar um carro com uma placa já existente;
 
 -[] Não deve ser possível alterar a placa de um carro cadastrado;
 
--[] O carro deve ser cadastrado, por padrão, com disponibilidade;
+-[ x ] O carro deve ser cadastrado, por padrão, com disponibilidade;
 
--[] Não deve ser possível cadastrar um carro quando o usuário não for administrador;
+-[*] Não deve ser possível cadastrar um carro quando o usuário não for administrador;
 
 # Listagem de carros
 
