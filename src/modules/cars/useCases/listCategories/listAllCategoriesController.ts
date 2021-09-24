@@ -9,6 +9,6 @@ export class ListAllCategoriesController {
       ListAllCategoriesUseCase
     );
     const all = await listAllCategoriesUseCase.execute();
-    return response.json(all);
+    return response.status(200).json(all);
   }
 }
