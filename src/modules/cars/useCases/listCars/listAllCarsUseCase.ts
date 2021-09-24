@@ -9,7 +9,7 @@ export class ListAllCarsUseCase {
     private carsRepository: ICarsRepository
   ) {}
   async execute(): Promise<Car[]> {
-    const allCars = await this.carsRepository.list();
+    const allCars = await this.carsRepository.listAllCarsAvailables();
     return allCars;
   }
 }

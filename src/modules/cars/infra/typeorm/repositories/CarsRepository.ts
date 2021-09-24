@@ -9,7 +9,7 @@ export class CarsRepository implements ICarsRepository {
   constructor() {
     this.repository = getRepository(Car);
   }
-  async list(): Promise<Car[]> {
+  async listAllCarsAvailables(): Promise<Car[]> {
     const allCars = await this.repository.find({ available: true });
     return allCars;
   }
