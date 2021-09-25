@@ -1,5 +1,4 @@
 import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
-import { User } from "@modules/accounts/infra/typeorm/entities/User";
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
 
 import { CreateUserUseCase } from "./CreateUserUseCase";
