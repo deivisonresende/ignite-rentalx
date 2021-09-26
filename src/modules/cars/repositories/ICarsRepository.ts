@@ -1,4 +1,4 @@
-import { IRequest } from "@modules/cars/useCases/listCars/listAllCarsUseCase";
+import { IRequest } from "@modules/cars/useCases/listAvailableCars/listAvailableCarsUseCase";
 
 import { ICreateCarDTO } from "../dtos/ICreateCarDTO";
 import { Car } from "../infra/typeorm/entities/Cars";

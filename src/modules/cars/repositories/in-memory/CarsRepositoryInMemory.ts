@@ -1,6 +1,6 @@
 import { ICreateCarDTO } from "@modules/cars/dtos/ICreateCarDTO";
 import { Car } from "@modules/cars/infra/typeorm/entities/Cars";
-import { IRequest } from "@modules/cars/useCases/listCars/listAllCarsUseCase";
+import { IRequest } from "@modules/cars/useCases/listAvailableCars/listAvailableCarsUseCase";
 
 import { ICarsRepository } from "../ICarsRepository";
 

@@ -1,6 +1,6 @@
 import { ICreateCarDTO } from "@modules/cars/dtos/ICreateCarDTO";
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
-import { IRequest } from "@modules/cars/useCases/listCars/listAllCarsUseCase";
+import { IRequest } from "@modules/cars/useCases/listAvailableCars/listAvailableCarsUseCase";
 import { getRepository, Repository } from "typeorm";
 
 import { Car } from "../entities/Cars";
@@ -27,13 +27,15 @@ export class CarsRepository implements ICarsRepository {
       .where("c.available= :available", { available: true });
 
     if (brand) {
-      carsQuery.andWhere("c.brand = :brand", { brand });
+      carsQuery.andWhere("LOWER(c.brand) = LOWER(:brand)", { brand });
     }
     if (name) {
-      carsQuery.andWhere("c.name = :name", { name });
+      carsQuery.andWhere("LOWER(c.name) = LOWER(:name)", { name });
     }
     if (category_id) {
-      carsQuery.andWhere("c.category_id = :category_id", { category_id });
+      carsQuery.andWhere("LOWER(category_id) = :LOWER(category_id)", {
+        category_id,
+      });
     }
     const cars = await carsQuery.getMany();
 
