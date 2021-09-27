@@ -42,7 +42,6 @@ export class AuthenticateUserUseCase {
       subject: user.id,
       expiresIn: "1d",
     });
-
     const tokenReturn: IResponse = {
       token,
       user: {
@@ -51,6 +50,7 @@ export class AuthenticateUserUseCase {
         email: user.email,
       },
     };
+
     return tokenReturn;
   }
 }

@@ -10,12 +10,16 @@ export class CarsRepository implements ICarsRepository {
   constructor() {
     this.repository = getRepository(Car);
   }
+  async findById(id: string): Promise<Car> {
+    const car = await this.repository.findOne(id);
+    return car;
+  }
 
   async findByLicensePLate(license_plate: string): Promise<Car> {
     const car = await this.repository.findOne({ license_plate });
     return car;
   }
-  async create(data: ICreateCarDTO): Promise<Car> {
+  async create({ ...data }: ICreateCarDTO): Promise<Car> {
     const car = this.repository.create(data);
     this.repository.save(car);
     return car;

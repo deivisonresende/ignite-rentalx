@@ -43,7 +43,7 @@ export class Car {
   @JoinColumn({ name: "category_id" })
   category: Category;
   @Column()
-  category_id?: string;
+  category_id: string;
 
   @ManyToMany(() => Specification)
   @JoinTable({
