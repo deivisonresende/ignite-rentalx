@@ -4,7 +4,7 @@ import { container } from "tsyringe";
 import { UploadCarImageUseCase } from "./UploadCarImageUseCase";
 
 interface IFiles {
-  fileName: string;
+  filename: string;
 }
 
 export class UploadCarImageController {
@@ -13,7 +13,7 @@ export class UploadCarImageController {
     const images = request.files as unknown as IFiles[];
     const uploadCarImageUseCase = container.resolve(UploadCarImageUseCase);
 
-    const images_name = images.map((file) => file.fileName);
+    const images_name = images.map((file) => file.filename);
 
     await uploadCarImageUseCase.execute({
       car_id,
