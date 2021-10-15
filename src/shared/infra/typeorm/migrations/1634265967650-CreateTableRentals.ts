@@ -40,12 +40,6 @@ export class CreateTableRentals1634265967650 implements MigrationInterface {
 
             type: "timestamp",
           },
-
-          {
-            name: "end_date",
-
-            type: "timestamp",
-          },
           {
             name: "expected_return_date",
 
