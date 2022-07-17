@@ -31,7 +31,6 @@ export class CreateRentalUseCase {
       throw new AppError("There's a rental in progress for user");
     }
 
-    console.log("Data pela requisição: ", expected_return_date);
     const expectedReturnDateFormat = dayjs(expected_return_date)
       .utc()
       .local()

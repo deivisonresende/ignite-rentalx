@@ -21,7 +21,7 @@ describe("Create Rental", () => {
       car_id: "121212",
       expected_return_date: dayAdd24Hours,
     });
-    console.log(rental);
+
     expect(rental).toHaveProperty("id");
     expect(rental).toHaveProperty("start_date");
   });
@@ -59,8 +59,8 @@ describe("Create Rental", () => {
   it("should not be able to create a new rental if invalid return time", async () => {
     expect(async () => {
       await createRentalUseCase.execute({
-        user_id: "user id",
-        car_id: "car id",
+        user_id: "123",
+        car_id: "test",
         expected_return_date: dayjs().toDate(),
       });
     }).rejects.toBeInstanceOf(AppError);
