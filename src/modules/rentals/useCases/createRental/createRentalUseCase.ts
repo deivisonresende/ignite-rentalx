@@ -20,6 +20,7 @@ export class CreateRentalUseCase {
     const carUnavailable = await this.rentalsRepository.findOpenRentalByCarId(
       car_id
     );
+
     if (carUnavailable) {
       throw new AppError("Car is unavailable");
     }

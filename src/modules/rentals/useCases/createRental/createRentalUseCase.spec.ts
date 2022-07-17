@@ -14,6 +14,7 @@ describe("Create Rental", () => {
     rentalsRepositoryInMemory = new RentalsRepositoryInMemory();
     createRentalUseCase = new CreateRentalUseCase(rentalsRepositoryInMemory);
   });
+
   it("should be able to create a new rental", async () => {
     const rental = await createRentalUseCase.execute({
       user_id: "12345",
