@@ -67,12 +67,14 @@
 
 **RF**
 
--[] Deve ser possível cadastrar um aluguel;
+-[x] Deve ser possível cadastrar um aluguel;
 
 **RN**
 
--[] O aluguel deve ter duração mínima de 24 horas;
+-[x] O aluguel deve ter duração mínima de 24 horas;
 
--[] Não deve ser possível cadastrar mais de um aluguel para o mesmo usuário simultaneamente;
+-[x] Não deve ser possível cadastrar mais de um aluguel para o mesmo usuário simultaneamente;
 
--[] Deve ser possível cadastrar mais de um aluguel para o mesmo veículo, somente se data de retirada é posterior a data da última devolução;
+-[x] Deve ser possível cadastrar mais de um aluguel para o mesmo veículo, somente se data de retirada é posterior a data da última devolução;
+
+-[x] O usuário deve estar autenticado na aplicação
