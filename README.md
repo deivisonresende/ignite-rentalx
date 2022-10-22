@@ -78,3 +78,19 @@
 -[x] Deve ser possível cadastrar mais de um aluguel para o mesmo veículo, somente se data de retirada é posterior a data da última devolução;
 
 -[x] O usuário deve estar autenticado na aplicação
+
+-[x] Ao realizar o aluguel de um carro, o status deverá ser alterado para indisponível; 
+
+# Devolução de carro
+
+**RF**
+-[] Deve ser possível realizar a devolução de um carro de
+
+**RN**
+-[] O usuário deve estar autenticado na aplicação
+-[] Se o carro for devolvido com menso de 24 horas, deverá ser cobrado a diária completa;
+-[] Ao realizar a devolução, o carro deverá ser liberado para outro aluguel;
+-[] Ao realizar a devolução, o usuário devera ser liberado para outro aluguel;
+-[] Ao realizar a devolução, deverá calculado o total do aluguel;
+-[] Caso o horário de devolução seja superior ao horário previsto, deverá ser cobrado multa proporcional aos dias/horas de atraso;
+-[] Caso haja multa. deverá ser somado ao total do aluguel;

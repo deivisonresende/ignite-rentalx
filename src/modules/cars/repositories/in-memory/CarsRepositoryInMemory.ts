@@ -13,9 +13,11 @@ export class CarsRepositoryInMemory implements ICarsRepository {
     this.cars.push(car);
     return car;
   }
+
   async findByLicensePLate(license_plate: string): Promise<Car> {
     return this.cars.find((car) => car.license_plate === license_plate);
   }
+
   async findAvailable(filters: IRequest): Promise<Car[]> {
     const { name, brand, category_id } = filters;
     const existsFilter = !!name || brand || category_id;
@@ -38,7 +40,13 @@ export class CarsRepositoryInMemory implements ICarsRepository {
 
     return cars;
   }
+
   async findById(id: string): Promise<Car> {
     return this.cars.find((car) => car.id === id);
+  }
+
+  async updateAvailable(id: string, available: boolean): Promise<void> {
+    const index = this.cars.findIndex((car) => car.id === id);
+    if (index) this.cars[index].available = available;
   }
 }

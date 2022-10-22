@@ -1,5 +1,11 @@
+import { QUnitType, OpUnitType } from "dayjs";
+
 interface IDateProvider {
-  compareInHours(start_date: Date, end_date: Date): number;
+  compare(
+    start_date: Date,
+    end_date: Date,
+    unit: QUnitType | OpUnitType
+  ): number;
   convertToUTC(date: Date): string;
   dateNow(): Date;
 }

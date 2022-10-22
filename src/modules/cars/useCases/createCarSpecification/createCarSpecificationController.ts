@@ -9,11 +9,11 @@ export class CreateCarSpecificationController {
       CreateCarSpecificationUseCase
     );
     const { id } = request.params;
-    const { specifications_id } = request.body;
+    const { specification_ids } = request.body;
 
     const cars = await createCarSpecificationUseCase.execute({
       car_id: id,
-      specifications_id,
+      specifications_id: specification_ids,
     });
 
     return response.status(200).json(cars);
