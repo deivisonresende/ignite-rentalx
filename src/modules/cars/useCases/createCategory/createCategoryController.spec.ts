@@ -36,23 +36,32 @@ describe("Create Category Controller", () => {
   });
 
   it("Should be able to create a new category", async () => {
-    const response = await request(app).post("/categories").send({
-      name: "Category Supertest",
-      description: "Category Supertest",
-    });
+    const response = await request(app)
+      .post("/categories")
+      .set("authorization", `bearer ${token}`)
+      .send({
+        name: "Category Supertest",
+        description: "Category Supertest",
+      });
 
     expect(response.status).toBe(201);
   });
 
   it("Should not be able to create a new category with name exists", async () => {
+    await request(app)
+      .post("/categories")
+      .set("authorization", `bearer ${token}`)
+      .send({
+        name: "same name",
+        description: "same name description",
+      });
+
     const response = await request(app)
       .post("/categories")
+      .set("authorization", `bearer ${token}`)
       .send({
-        name: "Category Supertest",
-        description: "Category Supertest",
-      })
-      .set({
-        Authorization: `Bearer ${token}`,
+        name: "same name",
+        description: "same name description",
       });
 
     expect(response.status).toBe(400);
