@@ -10,6 +10,7 @@ interface IResponse {
     id: string;
   };
   token: string;
+  refresh_token: string;
 }
 
 export { IRequest, IResponse };
