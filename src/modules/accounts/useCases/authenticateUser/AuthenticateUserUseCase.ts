@@ -32,7 +32,7 @@ export class AuthenticateUserUseCase {
 
     const token = sign({}, this.envProvider.get("secret"), {
       subject: user.id,
-      expiresIn: "15m",
+      expiresIn: this.envProvider.get("expire_token_time"),
     });
 
     const refresh_token = sign(
@@ -40,7 +40,7 @@ export class AuthenticateUserUseCase {
       this.envProvider.get("refresh_token_secret"),
       {
         subject: user.id,
-        expiresIn: "7d",
+        expiresIn: this.envProvider.get("expire_refresh_token_time"),
       }
     );
 

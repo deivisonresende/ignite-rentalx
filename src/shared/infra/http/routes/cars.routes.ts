@@ -24,7 +24,12 @@ carsRoutes.post(
   ensureAdmin,
   createCarController.handle
 );
-carsRoutes.get("/available", listAvailableCarsController.handle);
+
+carsRoutes.get(
+  "/available",
+  ensureAuthenticated,
+  listAvailableCarsController.handle
+);
 
 carsRoutes.post(
   "/specifications/:id",
