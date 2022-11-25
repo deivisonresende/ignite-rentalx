@@ -1,4 +1,3 @@
-import { Car } from "@modules/cars/infra/typeorm/entities/Cars";
 import {
   Column,
   CreateDateColumn,
@@ -9,6 +8,8 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+
+import { Car } from "../../../../cars/infra/typeorm/entities/Cars";
 
 @Entity("rentals")
 export class Rental {
