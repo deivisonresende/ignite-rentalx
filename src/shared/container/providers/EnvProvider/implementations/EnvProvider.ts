@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import { IEnvProvider } from "../IEnvProvider";
 
 class EnvProvider implements IEnvProvider {

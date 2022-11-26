@@ -1,5 +1,10 @@
+import { Expose } from "class-transformer";
 import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+
+import { EnvProvider } from "@shared/container/providers/EnvProvider/implementations/EnvProvider";
+
+const envProvider = new EnvProvider();
 
 @Entity("users")
 export class User {
@@ -26,6 +31,18 @@ export class User {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @Expose({ name: "avatar_url" })
+  avatar_url(): string {
+    switch (envProvider.get("storage")) {
+      case "disk":
+        return `${envProvider.get("api_url")}/avatar/${this.avatar}`;
+      case "cloud":
+        return `${envProvider.get("aws_bucket_url")}/avatar/${this.avatar}`;
+      default:
+        return null;
+    }
+  }
 
   constructor() {
     if (!this.id) {
