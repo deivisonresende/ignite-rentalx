@@ -34,7 +34,7 @@ export class User {
 
   @Expose({ name: "avatar_url" })
   avatar_url(): string {
-    switch (envProvider.get("storage")) {
+    switch (envProvider.get("storage_provider")) {
       case "disk":
         return `${envProvider.get("api_url")}/avatar/${this.avatar}`;
       case "cloud":

@@ -1,25 +1,28 @@
+import { SES } from "aws-sdk";
 import fs from "fs";
 import Handlebars from "handlebars";
 import nodemailer, { Transporter } from "nodemailer";
-import { injectable } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
+import { IEnvProvider } from "../../EnvProvider/IEnvProvider";
 import { IMailProvider, IParameters } from "../IMailProvider";
 
 @injectable()
-class EtherealMailProvider implements IMailProvider {
+class SESMailProvider implements IMailProvider {
   private client: Transporter;
-  constructor() {
-    nodemailer.createTestAccount().then((account) => {
-      const transporter = nodemailer.createTransport({
-        host: account.smtp.host,
-        port: account.smtp.port,
-        secure: account.smtp.secure,
-        auth: {
-          user: account.user,
-          pass: account.pass,
+  constructor(
+    @inject("EnvProvider")
+    private envProvider: IEnvProvider
+  ) {
+    this.client = nodemailer.createTransport({
+      SES: new SES({
+        apiVersion: "2010-12-01",
+        region: this.envProvider.get("aws_region"),
+        credentials: {
+          accessKeyId: this.envProvider.get("aws_access_key_id"),
+          secretAccessKey: this.envProvider.get("aws_secret_key"),
         },
-      });
-      this.client = transporter;
+      }),
     });
   }
 
@@ -35,16 +38,13 @@ class EtherealMailProvider implements IMailProvider {
 
     const templateHTML = templateParse(variables);
 
-    const message = await this.client.sendMail({
+    await this.client.sendMail({
       from: "Retal-x <noreplay@rentalx.com.br>",
       to,
       subject,
       html: templateHTML,
     });
-
-    console.log("message sent: %s", message?.messageId);
-    console.log("preview url: %s", nodemailer.getTestMessageUrl(message));
   }
 }
 
-export { EtherealMailProvider };
+export { SESMailProvider };

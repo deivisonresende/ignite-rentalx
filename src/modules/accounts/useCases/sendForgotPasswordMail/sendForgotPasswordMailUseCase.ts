@@ -18,7 +18,7 @@ class SendForgotPasswordMailUseCase {
     private usersTokensRepository: IUsersTokensRepository,
     @inject("DayjsDateProvider")
     private dateProvider: IDateProvider,
-    @inject("EtherealMailProvider")
+    @inject("MailProvider")
     private mailProvider: IMailProvider,
     @inject("EnvProvider")
     private envProvider: IEnvProvider
@@ -52,12 +52,12 @@ class SendForgotPasswordMailUseCase {
       link: `${urlResetPassword}/?token=${token}`,
     };
 
-    await this.mailProvider.sendEmail(
-      email,
-      "Recuperação de senha",
+    await this.mailProvider.sendEmail({
+      to: email,
+      subject: "Recuperação de senha",
       variables,
-      templatePath
-    );
+      path: templatePath,
+    });
   }
 }
 
